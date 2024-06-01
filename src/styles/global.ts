@@ -11,6 +11,7 @@ export const globalStyles = globalCss({
 		backgroundColor: '$gray100',
 		color: '$gray900',
 		fontFamily: '$default',
+		lineHeight: '$base',
 		'-webkit-font-smoothing': 'antialiased',
 		scrollBehavior: 'smooth',
 	},
@@ -18,6 +19,7 @@ export const globalStyles = globalCss({
 	'h1, h2, h3, h4, h5, h6': {
 		fontSize: 'inherit',
 		fontWeight: 'inherit',
+		lineHeight: '$base',
 	},
 
 	'input, button, textarea, select': {
