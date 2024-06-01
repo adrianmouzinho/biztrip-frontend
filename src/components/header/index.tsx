@@ -2,7 +2,7 @@ import { Button } from '../ui/button'
 import { SearchInput } from '../ui/search-input'
 import { HeaderContainer } from './styles'
 
-import plusIcon from '../../assets/icons/plus.svg'
+import plusIcon from '@/assets/icons/plus.svg'
 
 export function Header() {
 	return (

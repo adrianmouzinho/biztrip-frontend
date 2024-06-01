@@ -1,7 +1,7 @@
 import { type ComponentProps, forwardRef } from 'react'
 import { Input, InputContainer } from './styles'
 
-import searchIcon from '../../../assets/icons/search.svg'
+import searchIcon from '@/assets/icons/search.svg'
 
 interface SearchInputProps extends ComponentProps<typeof Input> {}
 
