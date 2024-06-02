@@ -25,7 +25,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 		const storageToken = localStorage.getItem('@biztriz:token')
 
 		if (storageUser && storageToken) {
-			const [type, value] = JSON.parse(storageToken).split(' ')
+			const [type, value] = storageToken.split(' ')
 
 			api.defaults.headers.common.Authorization = `${type} ${value}`
 
@@ -42,12 +42,14 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
 		api.defaults.headers.common.Authorization = `${token.type} ${token.value}`
 
-		localStorage.setItem('@biztriz:user', JSON.stringify(user))
-		localStorage.setItem('@biztriz:token', token.value)
+		const userToStorage = JSON.stringify(user)
+
+		localStorage.setItem('@biztriz:user', userToStorage)
+		localStorage.setItem('@biztriz:token', `${token.type} ${token.value}`)
 	}
 
 	return (
-		<AuthContext.Provider value={{ signed: !!user, user, signIn }}>
+		<AuthContext.Provider value={{ signed: Boolean(user), user, signIn }}>
 			{children}
 		</AuthContext.Provider>
 	)
