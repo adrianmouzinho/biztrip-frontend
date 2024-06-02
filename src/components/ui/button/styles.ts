@@ -1,11 +1,11 @@
-import { styled } from '../../../styles'
+import { styled } from '@/styles'
 
 export const Button = styled('button', {
 	all: 'unset',
 	borderRadius: '$md',
-	fontSize: '$md',
 	fontWeight: '$semiBold',
 	fontFamily: '$default',
+	lineHeight: '$shorter',
 	textAlign: 'center',
 	boxSizing: 'border-box',
 
@@ -64,16 +64,19 @@ export const Button = styled('button', {
 			sm: {
 				height: 48,
 				padding: '0 $4',
+				fontSize: '$md',
 			},
 
 			md: {
 				height: 52,
 				padding: '0 $4',
+				fontSize: '$xl',
 			},
 
 			lg: {
 				height: 80,
 				padding: '0 $6',
+				fontSize: '$2xl',
 			},
 		},
 	},
