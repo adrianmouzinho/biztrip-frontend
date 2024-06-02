@@ -1,30 +1,37 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
+import { isAxiosError } from 'axios'
 import { CircleAlert } from 'lucide-react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import * as yup from 'yup'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useAuth } from '@/contexts/auth'
 import { ErrorMessage, Form, InputsContainer } from './styles'
 
 import logoImg from '@/assets/logo.svg'
-import { useAuth } from '@/contexts/auth'
-import { useNavigate } from 'react-router-dom'
 
 const signInSchema = yup.object().shape({
 	email: yup
 		.string()
 		.email('Insira um e-mail válido')
-		.required('Este campo é obrigatório'),
-	password: yup.string().required('Este campo é obrigatório'),
+		.required('O campo e-mail é obrigatório'),
+	password: yup
+		.string()
+		.min(8, 'A senha deve ter pelo menos 8 caracteres')
+		.required('O campo senha é obrigatório'),
 })
 
 type SignInSchema = yup.InferType<typeof signInSchema>
 
 export function SignIn() {
+	const [error, setError] = useState<string | null>(null)
+
 	const { signIn } = useAuth()
 	const navigate = useNavigate()
 
@@ -45,9 +52,16 @@ export function SignIn() {
 			await authenticate({ email, password })
 
 			toast.success('Login efetuado com sucesso.')
+			setError(null)
 
 			navigate('/', { replace: true })
-		} catch (err) {}
+		} catch (err) {
+			if (isAxiosError(err)) {
+				if ('message' in err.response?.data) {
+					setError(err.response?.data.message)
+				}
+			}
+		}
 	}
 
 	return (
@@ -94,6 +108,13 @@ export function SignIn() {
 					)}
 				</div>
 			</InputsContainer>
+
+			{error && (
+				<ErrorMessage>
+					<CircleAlert />
+					{error}
+				</ErrorMessage>
+			)}
 
 			<Button type="submit" size="md" disabled={isSubmitting}>
 				{isSubmitting ? 'Carregando...' : 'Entrar'}

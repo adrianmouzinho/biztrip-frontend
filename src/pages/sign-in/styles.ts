@@ -2,7 +2,7 @@ import { styled } from '@/styles'
 
 export const Form = styled('form', {
 	width: '100%',
-	maxWidth: 400,
+	maxWidth: 420,
 	padding: '$8',
 
 	display: 'flex',

@@ -1,19 +1,13 @@
 import { isAxiosError } from 'axios'
 import { useLayoutEffect } from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 import { Header } from '@/components/header'
-import { useAuth } from '@/contexts/auth'
 import { api } from '@/lib/axios'
 import { Container, Main } from './styles'
 
 export function AppLayout() {
-	const { signed } = useAuth()
 	const navigate = useNavigate()
-
-	if (!signed) {
-		return <Navigate to={'/sign-in'} replace />
-	}
 
 	useLayoutEffect(() => {
 		const interceptorId = api.interceptors.response.use(
@@ -23,6 +17,7 @@ export function AppLayout() {
 					const status = error.response?.status
 
 					if (status === 401) {
+						console.log('deu erro')
 						navigate('/sign-in', {
 							replace: true,
 						})
