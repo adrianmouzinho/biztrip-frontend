@@ -18,6 +18,9 @@
 			"style": {
 				"useSelfClosingElements": "off",
 				"noNonNullAssertion": "off"
+			},
+			"correctness": {
+				"noUnsafeOptionalChaining": "off"
 			}
 		}
 	}

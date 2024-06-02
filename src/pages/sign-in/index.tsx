@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@tanstack/react-query'
 import { CircleAlert } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -10,6 +11,8 @@ import { Label } from '@/components/ui/label'
 import { ErrorMessage, Form, InputsContainer } from './styles'
 
 import logoImg from '@/assets/logo.svg'
+import { useAuth } from '@/contexts/auth'
+import { useNavigate } from 'react-router-dom'
 
 const signInSchema = yup.object().shape({
 	email: yup
@@ -22,6 +25,9 @@ const signInSchema = yup.object().shape({
 type SignInSchema = yup.InferType<typeof signInSchema>
 
 export function SignIn() {
+	const { signIn } = useAuth()
+	const navigate = useNavigate()
+
 	const {
 		register,
 		handleSubmit,
@@ -30,18 +36,18 @@ export function SignIn() {
 		resolver: yupResolver(signInSchema),
 	})
 
+	const { mutateAsync: authenticate } = useMutation({
+		mutationFn: signIn,
+	})
+
 	async function handleAuthenticate({ email, password }: SignInSchema) {
 		try {
-			// Delay de 1s
-			await new Promise((resolve) => setTimeout(resolve, 1000))
+			await authenticate({ email, password })
 
-			console.log({ email, password })
+			toast.success('Login efetuado com sucesso.')
 
-			toast.success('Login efetuado com sucesso')
-			toast
-		} catch (err) {
-			toast.error('Credenciais inválidas')
-		}
+			navigate('/', { replace: true })
+		} catch (err) {}
 	}
 
 	return (

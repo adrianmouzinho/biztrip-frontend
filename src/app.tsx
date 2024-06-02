@@ -1,7 +1,10 @@
+import { QueryClientProvider } from '@tanstack/react-query'
 import { CircleAlert, CircleCheck, Info, TriangleAlert } from 'lucide-react'
 import { RouterProvider } from 'react-router-dom'
 import { Toaster } from 'sonner'
 
+import { AuthContextProvider } from './contexts/auth'
+import { queryClient } from './lib/react-query'
 import { router } from './routes'
 
 const toastOptions = {
@@ -23,9 +26,11 @@ const icons = {
 
 export function App() {
 	return (
-		<>
-			<RouterProvider router={router} />
-			<Toaster toastOptions={toastOptions} icons={icons} />
-		</>
+		<QueryClientProvider client={queryClient}>
+			<AuthContextProvider>
+				<RouterProvider router={router} />
+				<Toaster toastOptions={toastOptions} icons={icons} />
+			</AuthContextProvider>
+		</QueryClientProvider>
 	)
 }
