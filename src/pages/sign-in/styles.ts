@@ -33,3 +33,20 @@ export const InputsContainer = styled('div', {
 		gap: '$2',
 	},
 })
+
+export const ErrorMessage = styled('div', {
+	color: '$red900',
+	display: 'flex',
+	alignItems: 'center',
+	gap: '$1',
+
+	img: {
+		width: '$5',
+		height: '$5',
+	},
+
+	label: {
+		fontSize: '$sm',
+		lineHeight: '$shorter',
+	},
+})

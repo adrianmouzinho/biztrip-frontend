@@ -29,4 +29,17 @@ export const Input = styled('input', {
 	'&::placeholder': {
 		color: '$gray500',
 	},
+
+	variants: {
+		hasError: {
+			true: {
+				border: '2px solid $red400',
+				background: '$red100',
+
+				'&::placeholder': {
+					color: '$gray600',
+				},
+			},
+		},
+	},
 })

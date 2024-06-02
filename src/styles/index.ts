@@ -36,7 +36,9 @@ export const {
 			green500: '#377C2F',
 
 			red100: '#FCE8ED',
+			red400: '#B80C33',
 			red500: '#AE1437',
+			red900: '#570A1B',
 
 			orange100: '#F6F4F3',
 			orange500: '#C36700',

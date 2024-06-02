@@ -39,4 +39,30 @@ export const globalStyles = globalCss({
 		maxWidth: '100%',
 		height: 'auto',
 	},
+
+	'.toast': {
+		padding: '$6',
+		boxShadow: 'none',
+		color: '$gray600',
+	},
+
+	'.toast-error': {
+		background: '$red100',
+		border: '1px solid $red500',
+	},
+
+	'.toast-success': {
+		background: '$green100',
+		border: '1px solid $green500',
+	},
+
+	'.toast-warning': {
+		background: '$orange100',
+		border: '1px solid $orange500',
+	},
+
+	'.toast-info': {
+		background: '$blue100',
+		border: '1px solid $blue500',
+	},
 })
