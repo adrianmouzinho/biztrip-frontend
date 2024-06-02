@@ -1,4 +1,4 @@
-import { PlusCircledIcon } from '@radix-ui/react-icons'
+import { CirclePlus } from 'lucide-react'
 
 import { Button } from '../ui/button'
 import { SearchInput } from '../ui/search-input'
@@ -13,7 +13,7 @@ export function Header() {
 				<Actions>
 					<SearchInput placeholder="Buscar credenciais" />
 					<Button>
-						<PlusCircledIcon />
+						<CirclePlus />
 						Nova credencial
 					</Button>
 				</Actions>

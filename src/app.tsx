@@ -1,8 +1,4 @@
-import {
-	CheckCircledIcon,
-	ExclamationTriangleIcon,
-	InfoCircledIcon,
-} from '@radix-ui/react-icons'
+import { CircleAlert, CircleCheck, Info, TriangleAlert } from 'lucide-react'
 import { RouterProvider } from 'react-router-dom'
 import { Toaster } from 'sonner'
 
@@ -19,10 +15,10 @@ const toastOptions = {
 }
 
 const icons = {
-	success: <CheckCircledIcon />,
-	info: <InfoCircledIcon />,
-	warning: <ExclamationTriangleIcon />,
-	error: <ExclamationTriangleIcon />,
+	success: <CircleCheck />,
+	info: <Info />,
+	warning: <TriangleAlert />,
+	error: <CircleAlert />,
 }
 
 export function App() {

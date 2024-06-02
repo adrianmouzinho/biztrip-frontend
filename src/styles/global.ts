@@ -47,6 +47,11 @@ export const globalStyles = globalCss({
 		fontSize: '$xs',
 		lineHeight: '$base',
 		fontWeight: '$medium',
+
+		svg: {
+			height: '$4',
+			width: '$4',
+		},
 	},
 
 	'.toast-error': {

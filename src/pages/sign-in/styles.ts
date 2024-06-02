@@ -40,7 +40,7 @@ export const ErrorMessage = styled('div', {
 	alignItems: 'center',
 	gap: '$1',
 
-	img: {
+	svg: {
 		width: '$5',
 		height: '$5',
 	},

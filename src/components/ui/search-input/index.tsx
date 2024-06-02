@@ -1,4 +1,4 @@
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { Search } from 'lucide-react'
 import { type ComponentProps, forwardRef } from 'react'
 import { Input, InputContainer } from './styles'
 
@@ -8,7 +8,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 	({ type, ...props }, ref) => {
 		return (
 			<InputContainer>
-				<MagnifyingGlassIcon />
+				<Search />
 				<Input {...props} ref={ref} type={type ?? 'text'} />
 			</InputContainer>
 		)

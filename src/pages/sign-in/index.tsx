@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { CircleAlert } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as yup from 'yup'
@@ -8,7 +9,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { ErrorMessage, Form, InputsContainer } from './styles'
 
-import alertIcon from '@/assets/icons/alert.svg'
 import logoImg from '@/assets/logo.svg'
 
 const signInSchema = yup.object().shape({
@@ -65,7 +65,7 @@ export function SignIn() {
 					/>
 					{errors.email && (
 						<ErrorMessage>
-							<img src={alertIcon} alt="Ícone de alerta" />
+							<CircleAlert />
 							{errors.email.message}
 						</ErrorMessage>
 					)}
@@ -82,7 +82,7 @@ export function SignIn() {
 					/>
 					{errors.password && (
 						<ErrorMessage>
-							<img src={alertIcon} alt="Ícone de alerta" />
+							<CircleAlert />
 							{errors.password.message}
 						</ErrorMessage>
 					)}
