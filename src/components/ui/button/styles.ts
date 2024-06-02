@@ -2,25 +2,18 @@ import { styled } from '@/styles'
 
 export const Button = styled('button', {
 	all: 'unset',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	gap: '$2',
 	borderRadius: '$md',
 	fontWeight: '$semiBold',
 	fontFamily: '$default',
 	lineHeight: '$shorter',
 	textAlign: 'center',
 	boxSizing: 'border-box',
-
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	gap: '$2',
-
 	cursor: 'pointer',
 	transition: 'background 300ms',
-
-	img: {
-		width: '$5',
-		height: '$5',
-	},
 
 	'&:disabled': {
 		cursor: 'not-allowed',
@@ -65,18 +58,33 @@ export const Button = styled('button', {
 				height: 48,
 				padding: '0 $4',
 				fontSize: '$md',
+
+				svg: {
+					width: '$4',
+					height: '$4',
+				},
 			},
 
 			md: {
 				height: 52,
 				padding: '0 $4',
 				fontSize: '$xl',
+
+				svg: {
+					width: '$5',
+					height: '$5',
+				},
 			},
 
 			lg: {
 				height: 80,
 				padding: '0 $6',
 				fontSize: '$2xl',
+
+				svg: {
+					width: '$8',
+					height: '$8',
+				},
 			},
 		},
 	},

@@ -1,24 +1,26 @@
 import { styled } from '@/styles'
 
-export const HeaderContainer = styled('header', {
-	backgroundColor: '$white',
+export const Container = styled('header', {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	background: '$white',
 	borderBottom: '1px solid $gray300',
+})
 
-	'> div': {
-		width: '100%',
-		maxWidth: 1328,
-		margin: '0 auto',
-		padding: '$4 $6',
+export const Content = styled('div', {
+	width: '100%',
+	maxWidth: 1328,
+	margin: '0 auto',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'space-between',
+	padding: '$4 $6',
 
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-
-		h2: {
-			fontSize: '$2xl',
-			fontWeight: '$semiBold',
-			letterSpacing: '1.5%',
-		},
+	h2: {
+		fontSize: '$2xl',
+		fontWeight: '$semiBold',
+		letterSpacing: '1.5%',
 	},
 })
 

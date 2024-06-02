@@ -12,9 +12,10 @@ export const InputContainer = styled('div', {
 	gap: '$2',
 	transition: 'box-shadow 300ms',
 
-	img: {
-		width: '$5',
-		height: '$5',
+	svg: {
+		width: '$6',
+		height: '$6',
+		color: '$gray500',
 	},
 
 	'&:hover': {
