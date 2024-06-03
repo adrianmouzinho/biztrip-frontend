@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
+    "@radix-ui/react-switch": "^1.0.3",
     "@stitches/react": "^1.2.8",
     "@tanstack/react-query": "^5.40.0",
     "axios": "^1.7.2",

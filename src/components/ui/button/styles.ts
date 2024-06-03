@@ -2,6 +2,7 @@ import { styled } from '@/styles'
 
 export const Button = styled('button', {
 	all: 'unset',
+	boxSizing: 'border-box',
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
@@ -11,7 +12,6 @@ export const Button = styled('button', {
 	fontFamily: '$default',
 	lineHeight: '$shorter',
 	textAlign: 'center',
-	boxSizing: 'border-box',
 	cursor: 'pointer',
 	transition: 'background 300ms',
 

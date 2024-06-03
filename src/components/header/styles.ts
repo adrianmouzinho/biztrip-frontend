@@ -10,7 +10,7 @@ export const Container = styled('header', {
 
 export const Content = styled('div', {
 	width: '100%',
-	maxWidth: 1328,
+	maxWidth: 1904,
 	margin: '0 auto',
 	display: 'flex',
 	alignItems: 'center',

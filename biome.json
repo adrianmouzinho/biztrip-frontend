@@ -21,6 +21,12 @@
 			},
 			"correctness": {
 				"noUnsafeOptionalChaining": "off"
+			},
+			"complexity": {
+				"useOptionalChain": "off"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off"
 			}
 		}
 	}

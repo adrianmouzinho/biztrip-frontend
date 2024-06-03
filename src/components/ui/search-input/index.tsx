@@ -9,7 +9,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
 		return (
 			<InputContainer>
 				<Search />
-				<Input {...props} ref={ref} type={type ?? 'text'} />
+				<Input {...props} ref={ref} type={type ?? 'search'} />
 			</InputContainer>
 		)
 	},
