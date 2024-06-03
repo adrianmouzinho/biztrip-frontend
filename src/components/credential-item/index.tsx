@@ -1,5 +1,9 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
+import { activateCredential } from '@/api/activate-credential'
+import type { GetCredentialsResponse } from '@/api/get-credentials'
 import { ServiceIcon } from '../service-icon'
 import { IconButton } from '../ui/icon-button'
 import { Label } from '../ui/label'
@@ -28,6 +32,55 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 	const [isCredentialActive, setIsCredentialActive] = useState(
 		credential.active,
 	)
+	const queryClient = useQueryClient()
+
+	function updateCredentialStatusOnCache(
+		credentialId: string,
+		status: boolean,
+	) {
+		const credentialsListingCache =
+			queryClient.getQueriesData<GetCredentialsResponse>({
+				queryKey: ['credentials'],
+			})
+
+		for (const [cacheKey, cached] of credentialsListingCache) {
+			if (!cached) {
+				continue
+			}
+
+			queryClient.setQueryData<GetCredentialsResponse>(cacheKey, {
+				...cached,
+				data: cached.data.map((credential) => {
+					if (credential.credential_uuid !== credentialId) {
+						return credential
+					}
+
+					return {
+						...credential,
+						active: status,
+					}
+				}),
+			})
+		}
+
+		toast.success('Credencial ativada com sucesso!')
+	}
+
+	const { mutateAsync: activateCredentialFn } = useMutation({
+		mutationFn: activateCredential,
+		onSuccess: async (_, { credentialId }) => {
+			updateCredentialStatusOnCache(credentialId, true)
+		},
+	})
+
+	function handleSwitchChange(isChecked: boolean) {
+		setIsCredentialActive(isChecked)
+		if (isChecked) {
+			activateCredentialFn({ credentialId: credential.credential_uuid })
+		} else {
+			console.log('Lógica quando o switch não está marcado')
+		}
+	}
 
 	return (
 		<Container>
@@ -54,7 +107,7 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 					<Switch
 						id="is-credential-active"
 						checked={isCredentialActive}
-						onCheckedChange={setIsCredentialActive}
+						onCheckedChange={handleSwitchChange}
 					/>
 					<Label htmlFor="is-credential-active">
 						{isCredentialActive ? 'Ativo' : 'Inativo'}
