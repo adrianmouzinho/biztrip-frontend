@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { getCredentials } from '@/api/get-credentials'
-import { CredentialItem } from '@/components/credential-item'
-import { CredentialsListSkeleton } from '@/components/credentials-list-skeleton'
+import { CredentialItem } from './components/credential-item'
+import { CredentialsListSkeleton } from './components/credentials-list-skeleton'
 import { EmptyItem, List } from './styles'
 
 export function Home() {

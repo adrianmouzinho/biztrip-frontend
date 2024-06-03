@@ -1,7 +1,7 @@
 import { CirclePlus } from 'lucide-react'
 
-import { Button } from '../ui/button'
-import { SearchInput } from '../ui/search-input'
+import { Button } from '../_ui/button'
+import { SearchInput } from '../_ui/search-input'
 import { Actions, Container, Content } from './styles'
 
 export function Header() {

@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import * as yup from 'yup'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button } from '@/components/_ui/button'
+import { Input } from '@/components/_ui/input'
+import { Label } from '@/components/_ui/label'
 import { useAuth } from '@/contexts/auth'
 import { ErrorMessage, Form, InputsContainer } from './styles'
 

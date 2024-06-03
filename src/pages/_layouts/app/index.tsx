@@ -17,7 +17,6 @@ export function AppLayout() {
 					const status = error.response?.status
 
 					if (status === 401) {
-						console.log('deu erro')
 						navigate('/sign-in', {
 							replace: true,
 						})

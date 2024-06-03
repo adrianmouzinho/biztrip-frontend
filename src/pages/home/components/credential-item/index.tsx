@@ -4,13 +4,13 @@ import { toast } from 'sonner'
 
 import { activateCredential } from '@/api/activate-credential'
 import type { GetCredentialsResponse } from '@/api/get-credentials'
-import { ServiceIcon } from '../service-icon'
-import { IconButton } from '../ui/icon-button'
-import { Label } from '../ui/label'
-import { Switch } from '../ui/switch'
+import { inactivateCredential } from '@/api/inactivate-credential'
+import { IconButton } from '@/components/_ui/icon-button'
+import { Label } from '@/components/_ui/label'
+import { Switch } from '@/components/_ui/switch'
+import { ServiceIcon } from '@/components/service-icon'
 import { Actions, Container, Content, Data, Header } from './styles'
 
-import { inactivateCredential } from '@/api/inactivate-credential'
 import pencilIcon from '@/assets/icons/pencil.svg'
 
 type ServiceType = 'airway' | 'road' | 'hotel' | 'vehicle'
