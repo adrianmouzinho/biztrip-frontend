@@ -10,6 +10,7 @@ import { Label } from '../ui/label'
 import { Switch } from '../ui/switch'
 import { Actions, Container, Content, Data, Header } from './styles'
 
+import { inactivateCredential } from '@/api/inactivate-credential'
 import pencilIcon from '@/assets/icons/pencil.svg'
 
 type ServiceType = 'airway' | 'road' | 'hotel' | 'vehicle'
@@ -63,7 +64,11 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 			})
 		}
 
-		toast.success('Credencial ativada com sucesso!')
+		if (status === true) {
+			toast.success('Credencial ativada com sucesso!')
+		} else {
+			toast.success('Credencial inativada com sucesso!')
+		}
 	}
 
 	const { mutateAsync: activateCredentialFn } = useMutation({
@@ -73,12 +78,19 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 		},
 	})
 
+	const { mutateAsync: inactivateCredentialFn } = useMutation({
+		mutationFn: inactivateCredential,
+		onSuccess: async (_, { credentialId }) => {
+			updateCredentialStatusOnCache(credentialId, false)
+		},
+	})
+
 	function handleSwitchChange(isChecked: boolean) {
 		setIsCredentialActive(isChecked)
 		if (isChecked) {
 			activateCredentialFn({ credentialId: credential.credential_uuid })
 		} else {
-			console.log('Lógica quando o switch não está marcado')
+			inactivateCredentialFn({ credentialId: credential.credential_uuid })
 		}
 	}
 
