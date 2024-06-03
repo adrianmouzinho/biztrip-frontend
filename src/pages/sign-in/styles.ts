@@ -1,37 +1,43 @@
 import { styled } from '@/styles'
 
-export const Form = styled('form', {
+export const Container = styled('div', {
 	width: '100%',
-	maxWidth: 420,
-	padding: '$8',
-
+	maxWidth: 664,
+	padding: '$10',
 	display: 'flex',
 	flexDirection: 'column',
-	gap: '$6',
-
+	gap: '$10',
 	background: '$white',
 	borderRadius: '$md',
 	border: '1px solid $gray300',
 
-	img: {
-		height: '$10',
+	h2: {
+		fontWeight: '$semiBold',
+		fontSize: '2.5rem',
+		letterSpacing: '1.5%',
 	},
 
-	h2: {
-		textAlign: 'center',
+	p: {
+		fontSize: '$2xl',
+		letterSpacing: '2%',
+		color: '$gray600',
 	},
 })
 
-export const InputsContainer = styled('div', {
+export const Form = styled('form', {
+	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
-	gap: '$4',
+	gap: '$6',
+})
 
-	'> div': {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: '$2',
-	},
+export const Flex = styled('div', { display: 'flex' })
+
+export const Fieldset = styled('fieldset', {
+	all: 'unset',
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '$2',
 })
 
 export const ErrorMessage = styled('div', {

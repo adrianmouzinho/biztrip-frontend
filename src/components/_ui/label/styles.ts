@@ -5,4 +5,5 @@ export const Label = styled('label', {
 	fontWeight: 'bold',
 	lineHeight: '$shorter',
 	color: '$gray700',
+	textAlign: 'left',
 })

@@ -4,13 +4,11 @@ import { api } from '@/lib/axios'
 // 	pageIndex?: number | null
 // }
 
-export type ServiceType = 'airway' | 'road' | 'hotel' | 'vehicle'
-
 export interface GetCredentialsResponse {
 	data: {
 		credential_uuid: string
 		description: string
-		service_type: ServiceType
+		service_type: 'airway' | 'road' | 'hotel' | 'vehicle'
 		provider: {
 			uuid: string
 			name: string

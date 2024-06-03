@@ -16,7 +16,7 @@ export const globalStyles = globalCss({
 		scrollBehavior: 'smooth',
 	},
 
-	'h1, h2, h3, h4, h5, h6': {
+	'h1, h2, h3, h4, h5, h6, p': {
 		fontSize: 'inherit',
 		fontWeight: 'inherit',
 		lineHeight: '$base',

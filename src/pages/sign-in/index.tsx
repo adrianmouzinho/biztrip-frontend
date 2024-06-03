@@ -12,9 +12,7 @@ import { Button } from '@/components/_ui/button'
 import { Input } from '@/components/_ui/input'
 import { Label } from '@/components/_ui/label'
 import { useAuth } from '@/contexts/auth'
-import { ErrorMessage, Form, InputsContainer } from './styles'
-
-import logoImg from '@/assets/logo.svg'
+import { Container, ErrorMessage, Fieldset, Flex, Form } from './styles'
 
 const signInSchema = yup.object().shape({
 	email: yup
@@ -65,13 +63,14 @@ export function SignIn() {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit(handleAuthenticate)}>
-			<img src={logoImg} alt="Logo da biztrip" />
+		<Container>
+			<Flex css={{ flexDirection: 'column', gap: '$6' }}>
+				<h2>Acessar a plataforma.</h2>
+				<p>Encontre as melhores condições para suas viagens corporativas</p>
+			</Flex>
 
-			<h2>Faça login para entrar na plataforma.</h2>
-
-			<InputsContainer>
-				<div>
+			<Form onSubmit={handleSubmit(handleAuthenticate)}>
+				<Fieldset>
 					<Label htmlFor="email">E-mail</Label>
 					<Input
 						type="email"
@@ -89,9 +88,9 @@ export function SignIn() {
 							{errors.email.message}
 						</ErrorMessage>
 					)}
-				</div>
+				</Fieldset>
 
-				<div>
+				<Fieldset>
 					<Label htmlFor="password">Senha</Label>
 					<Input
 						type="password"
@@ -106,19 +105,24 @@ export function SignIn() {
 							{errors.password.message}
 						</ErrorMessage>
 					)}
-				</div>
-			</InputsContainer>
+				</Fieldset>
 
-			{error && (
-				<ErrorMessage>
-					<CircleAlert />
-					{error}
-				</ErrorMessage>
-			)}
+				{error && (
+					<ErrorMessage>
+						<CircleAlert />
+						{error}
+					</ErrorMessage>
+				)}
 
-			<Button type="submit" size="md" disabled={isSubmitting}>
-				{isSubmitting ? 'Carregando...' : 'Entrar'}
-			</Button>
-		</Form>
+				<Flex css={{ flexDirection: 'column', gap: '$2' }}>
+					<Button type="submit" size="md" disabled={isSubmitting}>
+						{isSubmitting ? 'Carregando...' : 'Acessar'}
+					</Button>
+					<Button as="a" variant="tertiary">
+						Não possuo conta
+					</Button>
+				</Flex>
+			</Form>
+		</Container>
 	)
 }

@@ -13,13 +13,11 @@ import { Actions, Container, Content, Data, Header } from './styles'
 
 import pencilIcon from '@/assets/icons/pencil.svg'
 
-type ServiceType = 'airway' | 'road' | 'hotel' | 'vehicle'
-
 interface CredentialItemProps {
 	credential: {
 		credential_uuid: string
 		description: string
-		service_type: ServiceType
+		service_type: 'airway' | 'road' | 'hotel' | 'vehicle'
 		provider: {
 			uuid: string
 			name: string

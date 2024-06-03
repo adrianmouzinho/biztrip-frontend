@@ -1,7 +1,9 @@
-import { type ComponentProps, forwardRef } from 'react'
+import { type ComponentProps, type ElementType, forwardRef } from 'react'
 import { Button as CustomButton } from './styles'
 
-interface ButtonProps extends ComponentProps<typeof CustomButton> {}
+interface ButtonProps extends ComponentProps<typeof CustomButton> {
+	as?: ElementType
+}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ type, ...props }, ref) => {
