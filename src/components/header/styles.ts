@@ -24,8 +24,4 @@ export const Content = styled('div', {
 	},
 })
 
-export const Actions = styled('div', {
-	display: 'flex',
-	alignItems: 'center',
-	gap: '$4',
-})
+export const Flex = styled('div', { display: 'flex' })

@@ -4,7 +4,7 @@ export const Input = styled('input', {
 	height: 64,
 	width: '100%',
 	padding: '0 $6',
-	background: 'transparent',
+	background: '$white',
 	borderRadius: '$md',
 	border: '1px solid $gray300',
 	color: '$gray900',
