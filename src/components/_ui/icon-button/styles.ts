@@ -10,6 +10,7 @@ export const Button = styled('button', {
 	justifyContent: 'center',
 	background: 'transparent',
 	color: '$gray500',
+	borderRadius: '$md',
 	cursor: 'pointer',
 
 	'&:disabled': {

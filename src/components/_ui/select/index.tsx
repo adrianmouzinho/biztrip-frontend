@@ -52,6 +52,11 @@ const StyledSelectTrigger = styled(SelectPrimitive.SelectTrigger, {
 	},
 
 	'&[data-placeholder]': { color: '$gray500' },
+
+	'&[data-disabled]': {
+		background: '$gray100',
+		pointerEvents: 'none',
+	},
 })
 
 const SelectTrigger = forwardRef<

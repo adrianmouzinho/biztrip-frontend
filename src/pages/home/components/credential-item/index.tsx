@@ -12,6 +12,8 @@ import { ServiceIcon } from '@/components/service-icon'
 import { Actions, Container, Content, Data, Header } from './styles'
 
 import pencilIcon from '@/assets/icons/pencil.svg'
+import { Dialog, DialogTrigger } from '@/components/_ui/dialog'
+import { EditCredentialForm } from '@/components/edit-credential-form'
 
 interface CredentialItemProps {
 	credential: {
@@ -28,9 +30,12 @@ interface CredentialItemProps {
 }
 
 export function CredentialItem({ credential }: CredentialItemProps) {
+	const [isEditCredentialFormOpen, setEditIsCredentialFormOpen] =
+		useState(false)
 	const [isCredentialActive, setIsCredentialActive] = useState(
 		credential.active,
 	)
+
 	const queryClient = useQueryClient()
 
 	function updateCredentialStatusOnCache(
@@ -110,9 +115,23 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 			</Content>
 
 			<Actions>
-				<IconButton>
-					<img src={pencilIcon} alt="Ícone de editar" />
-				</IconButton>
+				<Dialog
+					open={isEditCredentialFormOpen}
+					onOpenChange={setEditIsCredentialFormOpen}
+				>
+					<DialogTrigger asChild>
+						<IconButton>
+							<img src={pencilIcon} alt="Ícone de editar" />
+						</IconButton>
+					</DialogTrigger>
+
+					<EditCredentialForm
+						credentialId={credential.credential_uuid}
+						onClose={() => setEditIsCredentialFormOpen(false)}
+						isOpen={isEditCredentialFormOpen}
+					/>
+				</Dialog>
+
 				<form>
 					<Switch
 						id="is-credential-active"
