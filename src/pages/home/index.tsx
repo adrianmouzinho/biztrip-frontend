@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 
 import { getCredentials } from '@/api/get-credentials'
+import { CredentialItem } from '@/components/credential-item'
+import { CredentialsListSkeleton } from '@/components/credentials-list-skeleton'
 import { Pagination } from '@/components/pagination'
 import { PaginationSkeleton } from '@/components/pagination-skeleton'
-import { CredentialItem } from './components/credential-item'
-import { CredentialsListSkeleton } from './components/credentials-list-skeleton'
 import { Container, EmptyItem, List } from './styles'
 
 export function Home() {

@@ -1,5 +1,5 @@
-import { Skeleton } from '@/components/_ui/skeleton'
 import { styled } from '@/styles'
+import { Skeleton } from '../_ui/skeleton'
 
 export const Container = styled('li', {
 	height: 92,
