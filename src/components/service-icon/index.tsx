@@ -19,5 +19,5 @@ const serviceTypeMap: Record<ServiceType, string> = {
 }
 
 export function ServiceIcon({ type }: ServiceIconProps) {
-	return <Icon src={serviceTypeMap[type]} alt="" />
+	return <Icon src={serviceTypeMap[type]} alt={type} />
 }
