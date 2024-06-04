@@ -1,12 +1,21 @@
-import type { SwitchProps } from '@radix-ui/react-switch'
 import { Check, X } from 'lucide-react'
+import {
+	type ComponentPropsWithoutRef,
+	type ElementRef,
+	forwardRef,
+} from 'react'
 
 import { SwitchRoot, SwitchThumb } from './styles'
 
-export function Switch({ ...props }: SwitchProps) {
+const Switch = forwardRef<
+	ElementRef<typeof SwitchRoot>,
+	ComponentPropsWithoutRef<typeof SwitchRoot>
+>(({ ...props }, ref) => {
 	return (
-		<SwitchRoot {...props}>
+		<SwitchRoot ref={ref} {...props}>
 			<SwitchThumb>{props.checked ? <Check /> : <X />}</SwitchThumb>
 		</SwitchRoot>
 	)
-}
+})
+
+export { Switch }
