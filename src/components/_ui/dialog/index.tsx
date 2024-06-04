@@ -25,7 +25,6 @@ const contentShow = keyframes({
 })
 
 const StyledDialogOverlay = styled(DialogPrimitive.Overlay, {
-	zIndex: 999,
 	background: 'rgba(0, 0, 0, 0.4)',
 	position: 'fixed',
 	inset: 0,
@@ -40,7 +39,6 @@ const DialogOverlay = forwardRef<
 })
 
 const StyledDialogContent = styled(DialogPrimitive.Content, {
-	zIndex: 999,
 	background: '$white',
 	borderRadius: '$md',
 	boxShadow: '0px 8px 12px 0px rgba(27, 27, 27, 0.16)',
