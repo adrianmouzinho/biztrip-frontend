@@ -12,10 +12,11 @@ export function Home() {
 	const [searchParams, setSearchParams] = useSearchParams()
 
 	const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1
+	const name = searchParams.get('name')
 
 	const { data: result, isFetching: isFetchingCredentials } = useQuery({
-		queryKey: ['credentials', page],
-		queryFn: () => getCredentials({ page }),
+		queryKey: ['credentials', name, page],
+		queryFn: () => getCredentials({ page, name }),
 	})
 
 	function handlePaginate(page: number) {

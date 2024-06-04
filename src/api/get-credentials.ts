@@ -2,6 +2,7 @@ import { api } from '@/lib/axios'
 
 export interface GetCredentialsQuery {
 	page?: number | null
+	name?: string | null
 }
 
 export interface GetCredentialsResponse {
@@ -40,10 +41,11 @@ export interface GetCredentialsResponse {
 	}
 }
 
-export async function getCredentials({ page }: GetCredentialsQuery) {
+export async function getCredentials({ page, name }: GetCredentialsQuery) {
 	const response = await api.get<GetCredentialsResponse>('/credentials', {
 		params: {
 			page,
+			name,
 		},
 	})
 
