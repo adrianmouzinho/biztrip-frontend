@@ -41,17 +41,17 @@ const editCredentialSchema = yup.object().shape({
 
 type EditCredentialSchema = yup.InferType<typeof editCredentialSchema>
 
-interface EditCredentialFormProps {
+interface EditCredentialModalProps {
 	credentialId: string
 	isOpen: boolean
 	onClose: () => void
 }
 
-export function EditCredentialForm({
+export function EditCredentialModal({
 	credentialId,
 	isOpen,
 	onClose,
-}: EditCredentialFormProps) {
+}: EditCredentialModalProps) {
 	const formRef = useRef(null)
 
 	const queryClient = useQueryClient()
@@ -66,14 +66,15 @@ export function EditCredentialForm({
 		resolver: yupResolver(editCredentialSchema),
 	})
 
-	const { mutateAsync: editCredentialFn } = useMutation({
-		mutationFn: editCredential,
-		onSuccess: async () => {
-			queryClient.invalidateQueries({
-				queryKey: ['credentials'],
-			})
-		},
-	})
+	const { mutateAsync: editCredentialFn, isPending: isEditingCredential } =
+		useMutation({
+			mutationFn: editCredential,
+			onSuccess: async () => {
+				queryClient.invalidateQueries({
+					queryKey: ['credentials'],
+				})
+			},
+		})
 
 	const {
 		data: credential,
@@ -246,7 +247,11 @@ export function EditCredentialForm({
 							</DialogClose>
 							<Button
 								type="submit"
-								disabled={isFetchingCredential || isLoadingCredential}
+								disabled={
+									isEditingCredential ||
+									isFetchingCredential ||
+									isLoadingCredential
+								}
 							>
 								Editar
 							</Button>

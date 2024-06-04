@@ -13,7 +13,7 @@ import { Actions, Container, Content, Data, Header } from './styles'
 
 import pencilIcon from '@/assets/icons/pencil.svg'
 import { Dialog, DialogTrigger } from '@/components/_ui/dialog'
-import { EditCredentialForm } from '@/components/edit-credential-form'
+import { EditCredentialModal } from '@/components/edit-credential-modal'
 
 interface CredentialItemProps {
 	credential: {
@@ -30,7 +30,7 @@ interface CredentialItemProps {
 }
 
 export function CredentialItem({ credential }: CredentialItemProps) {
-	const [isEditCredentialFormOpen, setEditIsCredentialFormOpen] =
+	const [isEditCredentialModalOpen, setIsEditCredentialModalOpen] =
 		useState(false)
 	const [isCredentialActive, setIsCredentialActive] = useState(
 		credential.active,
@@ -116,8 +116,8 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 
 			<Actions>
 				<Dialog
-					open={isEditCredentialFormOpen}
-					onOpenChange={setEditIsCredentialFormOpen}
+					open={isEditCredentialModalOpen}
+					onOpenChange={setIsEditCredentialModalOpen}
 				>
 					<DialogTrigger asChild>
 						<IconButton>
@@ -125,10 +125,10 @@ export function CredentialItem({ credential }: CredentialItemProps) {
 						</IconButton>
 					</DialogTrigger>
 
-					<EditCredentialForm
+					<EditCredentialModal
 						credentialId={credential.credential_uuid}
-						onClose={() => setEditIsCredentialFormOpen(false)}
-						isOpen={isEditCredentialFormOpen}
+						onClose={() => setIsEditCredentialModalOpen(false)}
+						isOpen={isEditCredentialModalOpen}
 					/>
 				</Dialog>
 

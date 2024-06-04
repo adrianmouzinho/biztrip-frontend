@@ -1,13 +1,17 @@
 // import * as Dialog from '@radix-ui/react-dialog'
 import { CirclePlus } from 'lucide-react'
+import { useState } from 'react'
 
 import { Button } from '../_ui/button'
 import { Dialog, DialogTrigger } from '../_ui/dialog'
 import { SearchInput } from '../_ui/search-input'
-import { CreateCredentialForm } from '../create-credential-form'
+import { CreateCredentialModal } from '../create-credential-modal'
 import { Container, Content, Flex } from './styles'
 
 export function Header() {
+	const [isCreateCredentialModalOpen, setIsCreateCredentialModalOpen] =
+		useState(false)
+
 	return (
 		<Container>
 			<Content>
@@ -16,7 +20,10 @@ export function Header() {
 				<Flex css={{ alignItems: 'center', gap: '$4' }}>
 					<SearchInput placeholder="Buscar credenciais" />
 
-					<Dialog>
+					<Dialog
+						open={isCreateCredentialModalOpen}
+						onOpenChange={setIsCreateCredentialModalOpen}
+					>
 						<DialogTrigger asChild>
 							<Button>
 								<CirclePlus />
@@ -24,7 +31,9 @@ export function Header() {
 							</Button>
 						</DialogTrigger>
 
-						<CreateCredentialForm />
+						<CreateCredentialModal
+							onClose={() => setIsCreateCredentialModalOpen(false)}
+						/>
 					</Dialog>
 				</Flex>
 			</Content>

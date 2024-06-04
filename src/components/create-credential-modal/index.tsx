@@ -36,7 +36,11 @@ const createCredentialSchema = yup.object().shape({
 
 type CreateCredentialSchema = yup.InferType<typeof createCredentialSchema>
 
-export function CreateCredentialForm() {
+interface CreateCredentialModalProps {
+	onClose: () => void
+}
+
+export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 	const [selectedProvider, setSelectedProvider] = useState<string | null>(null)
 
 	const formRef = useRef(null)
@@ -52,14 +56,15 @@ export function CreateCredentialForm() {
 		resolver: yupResolver(createCredentialSchema),
 	})
 
-	const { mutateAsync: createCredentialFn } = useMutation({
-		mutationFn: createCredential,
-		onSuccess: async () => {
-			queryClient.invalidateQueries({
-				queryKey: ['credentials'],
-			})
-		},
-	})
+	const { mutateAsync: createCredentialFn, isPending: isCreatingCredential } =
+		useMutation({
+			mutationFn: createCredential,
+			onSuccess: async () => {
+				queryClient.invalidateQueries({
+					queryKey: ['credentials'],
+				})
+			},
+		})
 
 	const { data: result, isFetching: isFetchingProviders } = useQuery({
 		queryKey: ['providers'],
@@ -99,6 +104,8 @@ export function CreateCredentialForm() {
 			service_type: serviceType,
 			parameters,
 		})
+
+		onClose()
 
 		toast.success('Credencial criada com sucesso!')
 	}
@@ -256,7 +263,11 @@ export function CreateCredentialForm() {
 					</DialogClose>
 					<Button
 						type="submit"
-						disabled={isFetchingProviders || isFetchingProviderParameters}
+						disabled={
+							isCreatingCredential ||
+							isFetchingProviders ||
+							isFetchingProviderParameters
+						}
 					>
 						Adicionar
 					</Button>

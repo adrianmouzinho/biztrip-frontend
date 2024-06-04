@@ -54,6 +54,7 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
 	flexDirection: 'column',
 	alignItems: 'stretch',
 	animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
+
 	'&:focus': { outline: 'none' },
 })
 
