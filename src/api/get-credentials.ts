@@ -1,8 +1,8 @@
 import { api } from '@/lib/axios'
 
-// export interface GetCredentialsQuery {
-// 	pageIndex?: number | null
-// }
+export interface GetCredentialsQuery {
+	page?: number | null
+}
 
 export interface GetCredentialsResponse {
 	data: {
@@ -19,14 +19,14 @@ export interface GetCredentialsResponse {
 		credential_values: string
 	}[]
 	links: {
-		first: string | null
-		last: string | null
+		first: string
+		last: string
 		prev: string | null
 		next: string | null
 	}
 	meta: {
 		current_page: number
-		from: number | null
+		from: number
 		last_page: number
 		links: {
 			url: string | null
@@ -35,14 +35,16 @@ export interface GetCredentialsResponse {
 		}[]
 		path: string
 		per_page: number
-		to: number | null
+		to: number
 		total: number
 	}
 }
 
-export async function getCredentials() {
+export async function getCredentials({ page }: GetCredentialsQuery) {
 	const response = await api.get<GetCredentialsResponse>('/credentials', {
-		params: {},
+		params: {
+			page,
+		},
 	})
 
 	return response.data

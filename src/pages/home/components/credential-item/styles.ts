@@ -12,7 +12,7 @@ export const Container = styled('li', {
 })
 
 export const Content = styled('div', {
-	flex: '1',
+	flex: 1,
 	display: 'flex',
 	flexDirection: 'column',
 	gap: '$4',
