@@ -27,7 +27,7 @@ export const Header = styled('span', {
 })
 
 export const DataSkeleton = styled(Skeleton, {
-	width: '172px',
+	width: '12rem',
 	height: '$6',
 })
 

@@ -1,5 +1,5 @@
 import { Button } from '../_ui/button'
-import { Container, Content, Flex, PaginationButton } from './styles'
+import { Container, Content, Flex, PageButton } from './styles'
 
 interface PaginationProps {
 	onPageChange: (pageIndex: number) => Promise<void> | void
@@ -26,35 +26,6 @@ interface PaginationProps {
 }
 
 export function Pagination({ links, meta, onPageChange }: PaginationProps) {
-	function getPageNumbers() {
-		const pages = []
-		const { current_page, last_page } = meta
-
-		if (last_page <= 6) {
-			for (let i = 1; i <= last_page; i++) {
-				pages.push(i)
-			}
-		} else {
-			if (current_page <= 3) {
-				pages.push(1, 2, 3, '...', last_page - 1, last_page)
-			} else if (current_page > last_page - 3) {
-				pages.push(1, 2, '...', last_page - 2, last_page - 1, last_page)
-			} else {
-				pages.push(
-					1,
-					'...',
-					current_page - 1,
-					current_page,
-					current_page + 1,
-					'...',
-					last_page,
-				)
-			}
-		}
-
-		return pages
-	}
-
 	return (
 		<Container>
 			<Content>
@@ -67,20 +38,23 @@ export function Pagination({ links, meta, onPageChange }: PaginationProps) {
 				</Button>
 
 				<Flex css={{ alignItems: 'center', gap: '$4' }}>
-					{getPageNumbers().map((page) => {
-						if (typeof page === 'number') {
+					{meta.links.slice(1, meta.links.length - 1).map((page) => {
+						const isPage = !!Number(page.label)
+
+						if (isPage) {
 							return (
-								<PaginationButton
-									key={page}
-									onClick={() => onPageChange(page)}
-									disabled={meta.current_page === page}
+								<PageButton
+									key={page.label}
+									onClick={() => onPageChange(Number(page.label))}
+									disabled={meta.links.length === 3}
+									active={meta.current_page === Number(page.label)}
 								>
-									{page}
-								</PaginationButton>
+									{page.label}
+								</PageButton>
 							)
 						}
 
-						return <span key={page}>{page}</span>
+						return <span key={page.label}>{page.label}</span>
 					})}
 				</Flex>
 

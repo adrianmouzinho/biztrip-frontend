@@ -7,37 +7,23 @@ export const globalStyles = globalCss({
 		boxSizing: 'border-box',
 	},
 
+	':focus': {
+		outline: 'none',
+		boxShadow: '0 0 0 2px $colors$gray300',
+	},
+
 	body: {
 		backgroundColor: '$gray100',
 		color: '$gray900',
-		fontFamily: '$default',
-		lineHeight: '$base',
 		'-webkit-font-smoothing': 'antialiased',
 		scrollBehavior: 'smooth',
 	},
 
-	'h1, h2, h3, h4, h5, h6, p': {
-		fontSize: 'inherit',
-		fontWeight: 'inherit',
+	'body, input, textarea, button': {
+		fontWeight: '$regular',
+		fontSize: '$md',
+		fontFamily: '$default',
 		lineHeight: '$base',
-	},
-
-	'input, button, textarea, select': {
-		font: 'inherit',
-	},
-
-	'ol, ul': {
-		listStyle: 'none',
-	},
-
-	'img, svg': {
-		display: 'block',
-		verticalAlign: 'middle',
-	},
-
-	img: {
-		maxWidth: '100%',
-		height: 'auto',
 	},
 
 	'.toast': {

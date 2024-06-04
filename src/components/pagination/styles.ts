@@ -24,7 +24,7 @@ export const Content = styled('div', {
 
 export const Flex = styled('div', { display: 'flex' })
 
-export const PaginationButton = styled('button', {
+export const PageButton = styled('button', {
 	all: 'unset',
 	boxSizing: 'border-box',
 	height: '2.75rem',

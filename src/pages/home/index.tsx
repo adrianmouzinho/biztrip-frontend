@@ -1,20 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-import { z } from 'zod'
 
 import { getCredentials } from '@/api/get-credentials'
 import { Pagination } from '@/components/pagination'
+import { PaginationSkeleton } from '@/components/pagination-skeleton'
 import { CredentialItem } from './components/credential-item'
 import { CredentialsListSkeleton } from './components/credentials-list-skeleton'
-import { Container, EmptyItem, List, LoadingPagination } from './styles'
+import { Container, EmptyItem, List } from './styles'
 
 export function Home() {
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	const page = z.coerce
-		.number()
-		.transform((page) => page - 1)
-		.parse(searchParams.get('page') ?? '1')
+	const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1
 
 	const { data: result, isFetching: isFetchingCredentials } = useQuery({
 		queryKey: ['credentials', page],
@@ -23,7 +20,7 @@ export function Home() {
 
 	function handlePaginate(page: number) {
 		setSearchParams((prev) => {
-			prev.set('page', (page + 1).toString())
+			prev.set('page', page.toString())
 
 			return prev
 		})
@@ -56,7 +53,7 @@ export function Home() {
 					onPageChange={handlePaginate}
 				/>
 			) : (
-				<LoadingPagination>Carregando credenciais...</LoadingPagination>
+				<PaginationSkeleton />
 			)}
 		</Container>
 	)

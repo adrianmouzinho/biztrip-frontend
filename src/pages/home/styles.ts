@@ -25,16 +25,3 @@ export const EmptyItem = styled('div', {
 	border: '1px solid $gray300',
 	lineHeight: '$shorter',
 })
-
-export const LoadingPagination = styled('div', {
-	height: 80,
-	position: 'fixed',
-	bottom: 0,
-	left: 0,
-	right: 0,
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	background: '$white',
-	borderTop: '1px solid $gray300',
-})
