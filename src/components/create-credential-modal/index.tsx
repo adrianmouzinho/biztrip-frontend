@@ -14,6 +14,7 @@ import { DialogClose, DialogContent, DialogTitle } from '../_ui/dialog'
 import { IconButton } from '../_ui/icon-button'
 import { Input } from '../_ui/input'
 import { Label } from '../_ui/label'
+import { Loading } from '../_ui/loading'
 import {
 	Select,
 	SelectContent,
@@ -175,7 +176,6 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 							)
 						}}
 					/>
-
 					<Fieldset>
 						<Label htmlFor="name" required>
 							Nome da credencial
@@ -188,7 +188,6 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 							</ErrorMessage>
 						)}
 					</Fieldset>
-
 					<Controller
 						control={control}
 						name="serviceType"
@@ -223,6 +222,14 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 							)
 						}}
 					/>
+
+					{isFetchingProviderParameters && (
+						<Flex
+							css={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+						>
+							<Loading css={{ color: '$black' }} />
+						</Flex>
+					)}
 
 					{data && (
 						<>
@@ -269,6 +276,7 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 							isFetchingProviderParameters
 						}
 					>
+						{isCreatingCredential && <Loading css={{ color: '$white' }} />}
 						Adicionar
 					</Button>
 				</Flex>

@@ -41,10 +41,3 @@ export const ErrorMessage = styled('div', {
 		lineHeight: '$shorter',
 	},
 })
-
-export const Loading = styled('p', {
-	flex: 1,
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-})

@@ -11,6 +11,7 @@ import * as yup from 'yup'
 import { Button } from '@/components/_ui/button'
 import { Input } from '@/components/_ui/input'
 import { Label } from '@/components/_ui/label'
+import { Loading } from '@/components/_ui/loading'
 import { useAuth } from '@/contexts/auth'
 import { Container, ErrorMessage, Fieldset, Flex, Form } from './styles'
 
@@ -122,7 +123,7 @@ export function SignIn() {
 						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
 						disabled={isSubmitting}
 					>
-						{isSubmitting ? 'Carregando...' : 'Acessar'}
+						{isSubmitting && <Loading css={{ color: '$white' }} />} Acessar
 					</Button>
 					<Button
 						as="a"

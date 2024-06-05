@@ -13,6 +13,7 @@ import { DialogClose, DialogContent, DialogTitle } from '../_ui/dialog'
 import { IconButton } from '../_ui/icon-button'
 import { Input } from '../_ui/input'
 import { Label } from '../_ui/label'
+import { Loading } from '../_ui/loading'
 import {
 	Select,
 	SelectContent,
@@ -22,14 +23,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '../_ui/select'
-import {
-	ErrorMessage,
-	Fieldset,
-	Flex,
-	Form,
-	InputsContainer,
-	Loading,
-} from './styles'
+import { ErrorMessage, Fieldset, Flex, Form, InputsContainer } from './styles'
 
 const editCredentialSchema = yup.object().shape({
 	name: yup.string().required('O campo nome da credencial é obrigatório'),
@@ -146,7 +140,11 @@ export function EditCredentialModal({
 
 			<Form ref={formRef} onSubmit={handleSubmit(handleEditCredential)}>
 				{isLoadingCredential && (
-					<Loading>Carregando dados da credencial...</Loading>
+					<Flex
+						css={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+					>
+						<Loading css={{ color: '$black' }} />
+					</Flex>
 				)}
 
 				{credential && (
@@ -257,6 +255,7 @@ export function EditCredentialModal({
 									isLoadingCredential
 								}
 							>
+								{isEditingCredential && <Loading css={{ color: '$white' }} />}{' '}
 								Editar
 							</Button>
 						</Flex>
