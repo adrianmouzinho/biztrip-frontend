@@ -7,17 +7,17 @@
 </p>
 
 <p align="center">
-  <a href="#-pre-requisitos">Pré-requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-rodando-a-aplicacao">Instalação</a>
+  <a href="#pre-requisitos">Pré-requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rodando-a-aplicacao">Instalação</a>
 </p>
 
 <p align="center">
     <img alt="Biztrip Preview" title="Biztrip Preview" src=".github/biztrip-preview.png" />
 </p>
 
-## Pré-requisitos
+<h2 id="pre-requisitos">Pré-requisitos</h2>
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
@@ -31,7 +31,7 @@ $ npm --version
 10.2.3
 ```
 
-## Tecnologias
+<h2 id="tecnologias">Tecnologias</h2>
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -46,7 +46,7 @@ $ npm --version
 - [Testing Library](https://testing-library.com/docs/)
 - [Storybook](https://storybook.js.org/docs/get-started)
 
-## Features
+<h2 id="features">Features</h2>
 
 - Cadastro de credenciais
 - Listagem de credenciais com paginação
@@ -55,7 +55,7 @@ $ npm --version
 - Ativação de credenciais
 - Filtro de credenciais
 
-## Rodando a aplicação
+<h2 id="rodando-a-aplicacao">Rodando a aplicação</h2>
 
 ```bash
 # Clone este repositório
