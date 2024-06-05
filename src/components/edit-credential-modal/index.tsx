@@ -73,6 +73,10 @@ export function EditCredentialModal({
 				queryClient.invalidateQueries({
 					queryKey: ['credentials'],
 				})
+
+				queryClient.invalidateQueries({
+					queryKey: ['credential'],
+				})
 			},
 		})
 
