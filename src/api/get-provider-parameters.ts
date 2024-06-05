@@ -1,10 +1,10 @@
 import { api } from '@/lib/axios'
 
-interface GetProviderParametersRequest {
+export interface GetProviderParametersRequest {
 	providerId: string
 }
 
-interface GetProviderParametersResponse {
+export interface GetProviderParametersResponse {
 	data: {
 		service_types: 'airway' | 'road' | 'hotel' | 'vehicle'[]
 		parameters: {

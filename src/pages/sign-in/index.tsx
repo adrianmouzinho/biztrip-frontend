@@ -80,6 +80,7 @@ export function SignIn() {
 						autoComplete="email"
 						autoCorrect="off"
 						{...register('email')}
+						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
 						hasError={!!errors.email}
 					/>
 					{errors.email && (
@@ -97,6 +98,7 @@ export function SignIn() {
 						id="password"
 						placeholder="Sua senha"
 						{...register('password')}
+						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
 						hasError={!!errors.password}
 					/>
 					{errors.password && (
@@ -115,10 +117,18 @@ export function SignIn() {
 				)}
 
 				<Flex css={{ flexDirection: 'column', gap: '$2' }}>
-					<Button type="submit" size="md" disabled={isSubmitting}>
+					<Button
+						type="submit"
+						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
+						disabled={isSubmitting}
+					>
 						{isSubmitting ? 'Carregando...' : 'Acessar'}
 					</Button>
-					<Button as="a" variant="tertiary">
+					<Button
+						as="a"
+						variant="tertiary"
+						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
+					>
 						Não possuo conta
 					</Button>
 				</Flex>

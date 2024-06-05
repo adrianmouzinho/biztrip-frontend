@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface CreateCredentialRequest {
+export interface CreateCredentialRequest {
 	providerId: string
 	description: string
 	service_type: 'airway' | 'road' | 'hotel' | 'vehicle'
@@ -10,7 +10,7 @@ interface CreateCredentialRequest {
 	}[]
 }
 
-interface CreateCredentialResponse {
+export interface CreateCredentialResponse {
 	credential_uuid: string
 	description: string
 	service_type: 'airway' | 'road' | 'hotel' | 'vehicle'

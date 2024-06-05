@@ -38,6 +38,10 @@ const StyledInputContainer = styled('div', {
 		opacity: 0.5,
 		cursor: 'not-allowed',
 	},
+
+	'@media (max-width: 768px)': {
+		width: '100%',
+	},
 })
 
 const StyledInput = styled('input', {

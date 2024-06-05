@@ -7,8 +7,10 @@ export const Container = styled('div', {
 })
 
 export const Main = styled('main', {
+	flex: 1,
 	width: '100%',
 	maxWidth: 1904,
 	margin: '0 auto',
-	padding: '$10 $6',
+	display: 'flex',
+	flexDirection: 'column',
 })

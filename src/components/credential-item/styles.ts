@@ -1,5 +1,13 @@
 import { styled } from '@/styles'
 
+export const Content = styled('div', {
+	flex: 1,
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '$4',
+	overflow: 'hidden',
+})
+
 export const Container = styled('li', {
 	height: 92,
 	display: 'flex',
@@ -9,13 +17,12 @@ export const Container = styled('li', {
 	background: '$white',
 	borderRadius: '$md',
 	border: '2px solid $blue500',
-})
 
-export const Content = styled('div', {
-	flex: 1,
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '$4',
+	'@media (max-width: 768px)': {
+		[`> ${Content}:not(:first-child)`]: {
+			display: 'none',
+		},
+	},
 })
 
 export const Header = styled('span', {
@@ -23,6 +30,10 @@ export const Header = styled('span', {
 	fontWeight: '$medium',
 	lineHeight: '$shorter',
 	color: '$gray500',
+
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap',
 })
 
 export const Data = styled('span', {
@@ -30,6 +41,10 @@ export const Data = styled('span', {
 	fontWeight: '$semiBold',
 	lineHeight: '$shorter',
 	color: '$gray900',
+
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap',
 })
 
 export const Actions = styled('div', {
@@ -43,5 +58,9 @@ export const Actions = styled('div', {
 		display: 'flex',
 		alignItems: 'center',
 		gap: '$2',
+
+		'@media (max-width: 768px)': {
+			minWidth: 'fit-content',
+		},
 	},
 })

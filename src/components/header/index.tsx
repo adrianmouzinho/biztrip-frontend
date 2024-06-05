@@ -37,7 +37,7 @@ export function Header() {
 			<Content>
 				<h2>Credenciais</h2>
 
-				<Flex css={{ alignItems: 'center', gap: '$4' }}>
+				<Flex>
 					<SearchInput
 						name="search"
 						placeholder="Buscar credenciais"
@@ -50,7 +50,13 @@ export function Header() {
 						onOpenChange={setIsCreateCredentialModalOpen}
 					>
 						<DialogTrigger asChild>
-							<Button>
+							<Button
+								css={{
+									'@media (max-width: 768px)': {
+										width: '100%',
+									},
+								}}
+							>
 								<CirclePlus />
 								Nova credencial
 							</Button>

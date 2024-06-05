@@ -22,6 +22,18 @@ export const Container = styled('div', {
 		letterSpacing: '2%',
 		color: '$gray600',
 	},
+
+	'@media (max-width: 768px)': {
+		padding: '$6',
+
+		h2: {
+			fontSize: '$2xl',
+		},
+
+		p: {
+			fontSize: '$md',
+		},
+	},
 })
 
 export const Form = styled('form', {

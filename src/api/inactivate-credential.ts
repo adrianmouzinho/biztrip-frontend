@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface InactivateCredentialRequest {
+export interface InactivateCredentialRequest {
 	credentialId: string
 }
 

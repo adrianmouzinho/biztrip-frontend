@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface EditCredentialRequest {
+export interface EditCredentialRequest {
 	description: string
 	service_type: 'airway' | 'road' | 'hotel' | 'vehicle'
 	credentials: {
@@ -9,7 +9,7 @@ interface EditCredentialRequest {
 	}[]
 }
 
-interface EditCredentialResponse {
+export interface EditCredentialResponse {
 	credential_uuid: string
 	description: string
 	service_type: 'airway' | 'road' | 'hotel' | 'vehicle'

@@ -10,6 +10,10 @@ export const Container = styled('div', {
 	justifyContent: 'center',
 	background: '$white',
 	borderTop: '1px solid $gray300',
+
+	'@media (max-width: 768px)': {
+		position: 'static',
+	},
 })
 
 export const Content = styled('div', {

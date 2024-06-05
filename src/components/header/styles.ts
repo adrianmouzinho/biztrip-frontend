@@ -17,6 +17,11 @@ export const Content = styled('div', {
 	justifyContent: 'space-between',
 	padding: '$4 $6',
 
+	'@media (max-width: 768px)': {
+		flexDirection: 'column',
+		gap: '$4',
+	},
+
 	h2: {
 		fontSize: '$2xl',
 		fontWeight: '$semiBold',
@@ -24,4 +29,13 @@ export const Content = styled('div', {
 	},
 })
 
-export const Flex = styled('div', { display: 'flex' })
+export const Flex = styled('div', {
+	display: 'flex',
+	alignItems: 'center',
+	gap: '$4',
+
+	'@media (max-width: 768px)': {
+		width: '100%',
+		flexDirection: 'column',
+	},
+})

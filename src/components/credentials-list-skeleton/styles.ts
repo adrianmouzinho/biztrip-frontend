@@ -1,6 +1,13 @@
 import { styled } from '@/styles'
 import { Skeleton } from '../_ui/skeleton'
 
+export const Content = styled('div', {
+	flex: '1',
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '$4',
+})
+
 export const Container = styled('li', {
 	height: 92,
 	display: 'flex',
@@ -10,13 +17,12 @@ export const Container = styled('li', {
 	background: '$white',
 	borderRadius: '$md',
 	border: '2px solid $gray300',
-})
 
-export const Content = styled('div', {
-	flex: '1',
-	display: 'flex',
-	flexDirection: 'column',
-	gap: '$4',
+	'@media (max-width: 768px)': {
+		[`> ${Content}:not(:first-child)`]: {
+			display: 'none',
+		},
+	},
 })
 
 export const Header = styled('span', {
@@ -29,6 +35,10 @@ export const Header = styled('span', {
 export const DataSkeleton = styled(Skeleton, {
 	width: '12rem',
 	height: '$6',
+
+	'@media (max-width: 768px)': {
+		width: '5rem',
+	},
 })
 
 export const ServiceIconSkeleton = styled(Skeleton, {
@@ -49,6 +59,6 @@ export const ButtonSkeleton = styled(Skeleton, {
 })
 
 export const FormSkeleton = styled(Skeleton, {
-	width: '112px',
+	width: '$16',
 	height: '$6',
 })

@@ -6,7 +6,6 @@ import {
 } from 'react'
 
 const StyledInput = styled('input', {
-	height: 64,
 	width: '100%',
 	padding: '0 $6',
 	background: '$white',
@@ -36,6 +35,16 @@ const StyledInput = styled('input', {
 	},
 
 	variants: {
+		size: {
+			sm: {
+				height: 48,
+			},
+
+			md: {
+				height: 64,
+			},
+		},
+
 		hasError: {
 			true: {
 				border: '2px solid $red400',
@@ -46,6 +55,10 @@ const StyledInput = styled('input', {
 				},
 			},
 		},
+	},
+
+	defaultVariants: {
+		size: 'md',
 	},
 })
 

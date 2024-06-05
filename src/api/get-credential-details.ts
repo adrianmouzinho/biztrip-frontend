@@ -1,6 +1,6 @@
 import { api } from '@/lib/axios'
 
-interface GetCredentialDetailsRequest {
+export interface GetCredentialDetailsRequest {
 	credentialId: string
 }
 
