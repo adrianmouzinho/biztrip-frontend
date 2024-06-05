@@ -59,7 +59,7 @@ $ npm --version
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/adrianmouzinho/biztrip-frontend
+$ git clone https://github.com/adrianmouzinho/biztrip-frontend.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd biztrip-frontend
