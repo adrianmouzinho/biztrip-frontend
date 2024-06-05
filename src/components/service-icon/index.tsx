@@ -7,15 +7,15 @@ import { Icon } from './styles'
 
 type ServiceType = 'airway' | 'road' | 'hotel' | 'vehicle'
 
-interface ServiceIconProps {
-	type: ServiceType
-}
-
 const serviceTypeMap: Record<ServiceType, string> = {
 	airway: airplaneIcon,
 	hotel: hotelIcon,
 	road: busIcon,
 	vehicle: carIcon,
+}
+
+interface ServiceIconProps {
+	type: ServiceType
 }
 
 export function ServiceIcon({ type }: ServiceIconProps) {
