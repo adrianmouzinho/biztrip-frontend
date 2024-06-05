@@ -227,7 +227,7 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 						<Flex
 							css={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
 						>
-							<Loading css={{ color: '$black' }} />
+							<Loading />
 						</Flex>
 					)}
 

@@ -143,7 +143,7 @@ export function EditCredentialModal({
 					<Flex
 						css={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
 					>
-						<Loading css={{ color: '$black' }} />
+						<Loading />
 					</Flex>
 				)}
 

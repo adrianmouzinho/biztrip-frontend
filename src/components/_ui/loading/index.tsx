@@ -14,7 +14,7 @@ const spin = keyframes({
 const Spinner = styled(LoaderCircle, {
 	animation: `${spin} 1s linear infinite`,
 	size: '$6',
-	color: '$white',
+	color: '$black',
 })
 
 const Loading = forwardRef<
