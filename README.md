@@ -75,6 +75,16 @@ $ npm run dev
 # A aplicação inciará na porta:5173 - acesse <http://localhost:5173>
 ```
 
+```bash
+# Executando testes unitários
+$ npm run test
+```
+
+```bash
+# Executando storybook
+$ npm run storybook
+```
+
 ---
 
 Feito com ❤️ por Adrian Mouzinho
