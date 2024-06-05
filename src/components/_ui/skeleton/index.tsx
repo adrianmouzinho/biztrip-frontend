@@ -1,6 +1,6 @@
 import { styled } from '@/styles'
 
-export const Skeleton = styled('div', {
+const Skeleton = styled('div', {
 	borderRadius: '$md',
 	background: '$gray600',
 	opacity: 0.1,
@@ -14,3 +14,5 @@ export const Skeleton = styled('div', {
 		'100%': { opacity: 0.1 },
 	},
 })
+
+export { Skeleton }
