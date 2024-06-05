@@ -234,6 +234,12 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 					{data && (
 						<>
 							{data.data.parameters.map((parameter) => {
+								const inputType =
+									parameter.input_type === 'int'
+										? 'number'
+										: parameter.input_type
+								const inputStep = parameter.input_type === 'int' ? 1 : undefined
+
 								return (
 									<Fieldset key={parameter.uuid}>
 										<Label
@@ -245,7 +251,8 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 												: parameter.description}
 										</Label>
 										<Input
-											type={parameter.input_type}
+											type={inputType}
+											step={inputStep}
 											id={parameter.uuid}
 											name={parameter.uuid}
 											required={parameter.required}

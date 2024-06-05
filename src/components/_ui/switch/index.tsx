@@ -25,7 +25,7 @@ const StyledSwitch = styled(SwitchPrimitive.Root, {
 	},
 
 	'&:disabled': {
-		background: '$gray100',
+		background: '$gray300',
 		pointerEvents: 'none',
 	},
 })

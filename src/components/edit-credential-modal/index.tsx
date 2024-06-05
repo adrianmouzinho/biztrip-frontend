@@ -214,6 +214,13 @@ export function EditCredentialModal({
 							/>
 
 							{credential.credential_values.map((credentialValue) => {
+								const inputType =
+									credentialValue.parameter.input_type === 'int'
+										? 'number'
+										: credentialValue.parameter.input_type
+								const inputStep =
+									credentialValue.parameter.input_type === 'int' ? 1 : undefined
+
 								return (
 									<Fieldset key={credentialValue.uuid}>
 										<Label
@@ -225,7 +232,8 @@ export function EditCredentialModal({
 												: credentialValue.parameter.description}
 										</Label>
 										<Input
-											type={credentialValue.parameter.input_type}
+											type={inputType}
+											step={inputStep}
 											id={credentialValue.uuid}
 											defaultValue={credentialValue.value}
 											name={credentialValue.uuid}

@@ -18,7 +18,31 @@ export default {
 	},
 } as Meta<SwitchProps>
 
-export const Default: StoryObj<SwitchProps> = {}
+export const Checked: StoryObj<SwitchProps> = {
+	args: {
+		checked: true,
+	},
+	argTypes: {
+		checked: {
+			table: {
+				disable: true,
+			},
+		},
+	},
+}
+
+export const Unchecked: StoryObj<SwitchProps> = {
+	args: {
+		checked: false,
+	},
+	argTypes: {
+		checked: {
+			table: {
+				disable: true,
+			},
+		},
+	},
+}
 
 export const Disabled: StoryObj<SwitchProps> = {
 	args: {

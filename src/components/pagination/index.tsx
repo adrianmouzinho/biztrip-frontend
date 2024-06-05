@@ -1,7 +1,7 @@
 import { Button } from '../_ui/button'
 import { Container, Content, Flex, PageButton } from './styles'
 
-interface PaginationProps {
+export interface PaginationProps {
 	onPageChange: (pageIndex: number) => Promise<void> | void
 	links: {
 		first: string
