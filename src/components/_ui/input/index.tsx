@@ -1,9 +1,5 @@
 import { styled } from '@/styles'
-import {
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
 const StyledInput = styled('input', {
 	width: '100%',
@@ -59,14 +55,16 @@ const StyledInput = styled('input', {
 
 	defaultVariants: {
 		size: 'md',
+		hasError: false,
 	},
 })
 
-const Input = forwardRef<
-	ElementRef<typeof StyledInput>,
-	ComponentPropsWithoutRef<typeof StyledInput>
->(({ type, ...props }, ref) => {
-	return <StyledInput {...props} ref={ref} type={type ?? 'text'} />
-})
+export interface InputProps extends ComponentProps<typeof StyledInput> {}
+
+const Input = forwardRef<ElementRef<typeof StyledInput>, InputProps>(
+	({ type, ...props }, ref) => {
+		return <StyledInput {...props} ref={ref} type={type ?? 'text'} />
+	},
+)
 
 export { Input }

@@ -1,10 +1,6 @@
 import { keyframes, styled } from '@/styles'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import {
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
 const Dialog = DialogPrimitive.Root
 
@@ -31,9 +27,12 @@ const StyledDialogOverlay = styled(DialogPrimitive.Overlay, {
 	animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
 })
 
+export interface DialogOverlayProps
+	extends ComponentProps<typeof StyledDialogOverlay> {}
+
 const DialogOverlay = forwardRef<
 	ElementRef<typeof StyledDialogOverlay>,
-	ComponentPropsWithoutRef<typeof StyledDialogOverlay>
+	DialogOverlayProps
 >(({ ...props }, ref) => {
 	return <StyledDialogOverlay ref={ref} {...props} />
 })
@@ -58,9 +57,12 @@ const StyledDialogContent = styled(DialogPrimitive.Content, {
 	'&:focus': { outline: 'none' },
 })
 
+export interface DialogContentProps
+	extends ComponentProps<typeof StyledDialogContent> {}
+
 const DialogContent = forwardRef<
 	ElementRef<typeof StyledDialogContent>,
-	ComponentPropsWithoutRef<typeof StyledDialogContent>
+	DialogContentProps
 >(({ children, ...props }, ref) => (
 	<DialogPortal>
 		<DialogOverlay />
@@ -76,9 +78,12 @@ const StyledDialogTitle = styled(DialogPrimitive.Title, {
 	letterSpacing: '1.5%',
 })
 
+export interface DialogTitleProps
+	extends ComponentProps<typeof StyledDialogTitle> {}
+
 const DialogTitle = forwardRef<
 	ElementRef<typeof StyledDialogTitle>,
-	ComponentPropsWithoutRef<typeof StyledDialogTitle>
+	DialogTitleProps
 >(({ ...props }, ref) => {
 	return <StyledDialogTitle ref={ref} {...props} />
 })
@@ -87,9 +92,12 @@ const StyledDialogDescription = styled(DialogPrimitive.Description, {
 	fontSize: '$md',
 })
 
+export interface DialogDescriptionProps
+	extends ComponentProps<typeof StyledDialogDescription> {}
+
 const DialogDescription = forwardRef<
 	ElementRef<typeof StyledDialogDescription>,
-	ComponentPropsWithoutRef<typeof StyledDialogDescription>
+	DialogDescriptionProps
 >(({ ...props }, ref) => {
 	return <StyledDialogDescription ref={ref} {...props} />
 })

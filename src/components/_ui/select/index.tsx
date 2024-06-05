@@ -1,11 +1,6 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-import {
-	type ComponentProps,
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
 import { styled } from '@/styles'
 
@@ -59,9 +54,12 @@ const StyledSelectTrigger = styled(SelectPrimitive.SelectTrigger, {
 	},
 })
 
+export interface SelectTriggerProps
+	extends ComponentProps<typeof StyledSelectTrigger> {}
+
 const SelectTrigger = forwardRef<
 	ElementRef<typeof StyledSelectTrigger>,
-	ComponentPropsWithoutRef<typeof StyledSelectTrigger>
+	SelectTriggerProps
 >(({ className, children, ...props }, ref) => {
 	return (
 		<StyledSelectTrigger ref={ref} {...props}>
@@ -81,9 +79,12 @@ const StyledSelectContent = styled(SelectPrimitive.Content, {
 	border: '1px solid $gray300',
 })
 
+export interface SelectContentProps
+	extends ComponentProps<typeof StyledSelectContent> {}
+
 const SelectContent = forwardRef<
 	ElementRef<typeof StyledSelectContent>,
-	ComponentPropsWithoutRef<typeof StyledSelectContent>
+	SelectContentProps
 >(({ className, children, ...props }, ref) => (
 	<SelectPrimitive.Portal>
 		<StyledSelectContent ref={ref} {...props}>
@@ -130,7 +131,8 @@ const StyledSelectLabel = styled(SelectPrimitive.Label, {
 	},
 })
 
-interface SelectLabelProps extends ComponentProps<typeof StyledSelectLabel> {
+export interface SelectLabelProps
+	extends ComponentProps<typeof StyledSelectLabel> {
 	required?: boolean
 }
 
@@ -150,9 +152,12 @@ const StyledSelectSeparator = styled(SelectPrimitive.Separator, {
 	backgroundColor: '$gray300',
 })
 
+export interface SelectSeparatorProps
+	extends ComponentProps<typeof StyledSelectSeparator> {}
+
 const SelectSeparator = forwardRef<
 	ElementRef<typeof StyledSelectSeparator>,
-	ComponentPropsWithoutRef<typeof StyledSelectSeparator>
+	SelectSeparatorProps
 >(({ className, ...props }, ref) => {
 	return <StyledSelectSeparator ref={ref} {...props} />
 })
@@ -172,9 +177,12 @@ const StyledSelectScrollUpButton = styled(
 	scrollButtonStyles,
 )
 
+export interface StyledSelectScrollUpButtonProps
+	extends ComponentProps<typeof StyledSelectScrollUpButton> {}
+
 const SelectScrollUpButton = forwardRef<
 	ElementRef<typeof StyledSelectScrollUpButton>,
-	ComponentPropsWithoutRef<typeof StyledSelectScrollUpButton>
+	StyledSelectScrollUpButtonProps
 >(({ className, ...props }, ref) => {
 	return (
 		<StyledSelectScrollUpButton ref={ref} {...props}>
@@ -188,9 +196,12 @@ const StyledSelectScrollDownButton = styled(
 	scrollButtonStyles,
 )
 
+export interface StyledSelectScrollDownButtonProps
+	extends ComponentProps<typeof StyledSelectScrollDownButton> {}
+
 const SelectScrollDownButton = forwardRef<
 	ElementRef<typeof StyledSelectScrollDownButton>,
-	ComponentPropsWithoutRef<typeof StyledSelectScrollDownButton>
+	StyledSelectScrollDownButtonProps
 >(({ className, ...props }, ref) => {
 	return (
 		<StyledSelectScrollDownButton ref={ref} {...props}>
@@ -199,16 +210,17 @@ const SelectScrollDownButton = forwardRef<
 	)
 })
 
-const SelectItem = forwardRef<
-	ElementRef<typeof StyledItem>,
-	ComponentPropsWithoutRef<typeof StyledItem>
->(({ children, ...props }, ref) => {
-	return (
-		<StyledItem {...props} ref={ref}>
-			<SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-		</StyledItem>
-	)
-})
+export interface StyledItemProps extends ComponentProps<typeof StyledItem> {}
+
+const SelectItem = forwardRef<ElementRef<typeof StyledItem>, StyledItemProps>(
+	({ children, ...props }, ref) => {
+		return (
+			<StyledItem {...props} ref={ref}>
+				<SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+			</StyledItem>
+		)
+	},
+)
 
 export {
 	Select,

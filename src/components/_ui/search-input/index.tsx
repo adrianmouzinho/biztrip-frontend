@@ -1,14 +1,10 @@
 import { styled } from '@/styles'
 import { Search } from 'lucide-react'
-import {
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
 const StyledInputContainer = styled('div', {
 	height: 48,
-	minWidth: 212,
+	width: '$80',
 	padding: '0 $4',
 	backgroundColor: 'transparent',
 	borderRadius: '$md',
@@ -45,11 +41,11 @@ const StyledInputContainer = styled('div', {
 })
 
 const StyledInput = styled('input', {
+	flex: 1,
 	color: '$gray900',
 	fontWeight: 'regular',
 	background: 'transparent',
 	border: 0,
-	width: '100%',
 
 	'&:focus': {
 		outline: 0,
@@ -64,9 +60,11 @@ const StyledInput = styled('input', {
 	},
 })
 
+export interface SearchInputProps extends ComponentProps<typeof StyledInput> {}
+
 const SearchInput = forwardRef<
 	ElementRef<typeof StyledInput>,
-	ComponentPropsWithoutRef<typeof StyledInput>
+	SearchInputProps
 >(({ type, ...props }, ref) => {
 	return (
 		<StyledInputContainer>

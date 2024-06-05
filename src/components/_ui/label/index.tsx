@@ -15,7 +15,7 @@ const StyledLabel = styled('label', {
 	},
 })
 
-interface LabelProps extends ComponentProps<typeof StyledLabel> {
+export interface LabelProps extends ComponentProps<typeof StyledLabel> {
 	required?: boolean
 }
 

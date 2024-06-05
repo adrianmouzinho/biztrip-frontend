@@ -1,9 +1,5 @@
 import { styled } from '@/styles'
-import {
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
 const StyledIconButton = styled('button', {
 	all: 'unset',
@@ -33,9 +29,12 @@ const StyledIconButton = styled('button', {
 	},
 })
 
+export interface IconButtonProps
+	extends ComponentProps<typeof StyledIconButton> {}
+
 const IconButton = forwardRef<
 	ElementRef<typeof StyledIconButton>,
-	ComponentPropsWithoutRef<typeof StyledIconButton>
+	IconButtonProps
 >(({ type, ...props }, ref) => {
 	return <StyledIconButton {...props} ref={ref} type={type ?? 'button'} />
 })

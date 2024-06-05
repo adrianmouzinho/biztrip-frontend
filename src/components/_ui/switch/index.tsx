@@ -1,13 +1,9 @@
 import { styled } from '@/styles'
 import * as SwitchPrimitive from '@radix-ui/react-switch'
 import { Check, X } from 'lucide-react'
-import {
-	type ComponentPropsWithoutRef,
-	type ElementRef,
-	forwardRef,
-} from 'react'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 
-const SwitchRoot = styled(SwitchPrimitive.Root, {
+const StyledSwitch = styled(SwitchPrimitive.Root, {
 	all: 'unset',
 	boxSizing: 'border-box',
 	overflow: 'hidden',
@@ -27,9 +23,14 @@ const SwitchRoot = styled(SwitchPrimitive.Root, {
 		background: '$blue100',
 		boxShadow: 'inset 0 0 0 2px $colors$blue500',
 	},
+
+	'&:disabled': {
+		background: '$gray100',
+		pointerEvents: 'none',
+	},
 })
 
-const SwitchThumb = styled(SwitchPrimitive.Thumb, {
+const StyledSwitchThumb = styled(SwitchPrimitive.Thumb, {
 	position: 'relative',
 	display: 'block',
 	width: '$4',
@@ -57,15 +58,18 @@ const SwitchThumb = styled(SwitchPrimitive.Thumb, {
 	},
 })
 
-const Switch = forwardRef<
-	ElementRef<typeof SwitchRoot>,
-	ComponentPropsWithoutRef<typeof SwitchRoot>
->(({ ...props }, ref) => {
-	return (
-		<SwitchRoot ref={ref} {...props}>
-			<SwitchThumb>{props.checked ? <Check /> : <X />}</SwitchThumb>
-		</SwitchRoot>
-	)
-})
+export interface SwitchProps extends ComponentProps<typeof StyledSwitch> {}
+
+const Switch = forwardRef<ElementRef<typeof StyledSwitch>, SwitchProps>(
+	({ ...props }, ref) => {
+		return (
+			<StyledSwitch ref={ref} {...props}>
+				<StyledSwitchThumb>
+					{props.checked ? <Check /> : <X />}
+				</StyledSwitchThumb>
+			</StyledSwitch>
+		)
+	},
+)
 
 export { Switch }
