@@ -284,13 +284,6 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 												required={parameter.required}
 											/>
 										)}
-										<Input
-											type={inputType}
-											step={inputStep}
-											id={parameter.uuid}
-											name={parameter.uuid}
-											required={parameter.required}
-										/>
 									</Fieldset>
 								)
 							})}
