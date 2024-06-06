@@ -41,3 +41,15 @@ export const ErrorMessage = styled('div', {
 		lineHeight: '$shorter',
 	},
 })
+
+export const PasswordContainer = styled('div', {
+	position: 'relative',
+
+	svg: {
+		position: 'absolute',
+		top: '$5',
+		right: '$5',
+		color: '$gray300',
+		cursor: 'pointer',
+	},
+})

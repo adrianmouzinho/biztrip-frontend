@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { CircleAlert, X } from 'lucide-react'
+import { CircleAlert, Eye, EyeOff, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -24,7 +24,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '../_ui/select'
-import { ErrorMessage, Fieldset, Flex, Form, InputsContainer } from './styles'
+import {
+	ErrorMessage,
+	Fieldset,
+	Flex,
+	Form,
+	InputsContainer,
+	PasswordContainer,
+} from './styles'
 
 const createCredentialSchema = yup.object().shape({
 	provider: yup.string().required('O campo fornecedor é obrigatório'),
@@ -43,6 +50,7 @@ interface CreateCredentialModalProps {
 
 export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 	const [selectedProvider, setSelectedProvider] = useState<string | null>(null)
+	const [showPassword, setShowPassword] = useState(false)
 
 	const formRef = useRef(null)
 
@@ -250,6 +258,32 @@ export function CreateCredentialModal({ onClose }: CreateCredentialModalProps) {
 												? parameter.title
 												: parameter.description}
 										</Label>
+										{inputType === 'password' ? (
+											<PasswordContainer>
+												<Input
+													type={showPassword ? 'text' : 'password'}
+													step={inputStep}
+													id={parameter.uuid}
+													name={parameter.uuid}
+													required={parameter.required}
+												/>
+												{showPassword ? (
+													<EyeOff
+														onClick={() => setShowPassword(!showPassword)}
+													/>
+												) : (
+													<Eye onClick={() => setShowPassword(!showPassword)} />
+												)}
+											</PasswordContainer>
+										) : (
+											<Input
+												type={inputType}
+												step={inputStep}
+												id={parameter.uuid}
+												name={parameter.uuid}
+												required={parameter.required}
+											/>
+										)}
 										<Input
 											type={inputType}
 											step={inputStep}
