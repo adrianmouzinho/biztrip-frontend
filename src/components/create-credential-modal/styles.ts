@@ -47,9 +47,18 @@ export const PasswordContainer = styled('div', {
 
 	svg: {
 		position: 'absolute',
-		top: '$5',
+		top: '$6',
 		right: '$5',
+		width: '$5',
+		height: '$5',
 		color: '$gray300',
 		cursor: 'pointer',
+	},
+
+	'@media (max-width: 768px)': {
+		svg: {
+			top: '$4',
+			right: '$4',
+		},
 	},
 })
