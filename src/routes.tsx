@@ -8,21 +8,21 @@ import { SignIn } from './pages/sign-in'
 export const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <AuthLayout />,
+		element: <AppLayout />,
 		children: [
 			{
-				path: '/sign-in',
-				element: <SignIn />,
+				index: true,
+				element: <Home />,
 			},
 		],
 	},
 	{
-		path: '/',
-		element: <AppLayout />,
+		path: '/sign-in',
+		element: <AuthLayout />,
 		children: [
 			{
-				path: '/',
-				element: <Home />,
+				index: true,
+				element: <SignIn />,
 			},
 		],
 	},
