@@ -3,13 +3,22 @@ import { useLayoutEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 import { Header } from '@/components/header'
+import { useAuth } from '@/contexts/auth'
 import { api } from '@/lib/axios'
 import { Container, Main } from './styles'
 
 export function AppLayout() {
+	const { signed } = useAuth()
+
 	const navigate = useNavigate()
 
 	useLayoutEffect(() => {
+		if (!signed) {
+			navigate('/login', {
+				replace: true,
+			})
+		}
+
 		const interceptorId = api.interceptors.response.use(
 			(response) => response,
 			(error) => {
@@ -17,7 +26,7 @@ export function AppLayout() {
 					const status = error.response?.status
 
 					if (status === 401) {
-						navigate('/sign-in', {
+						navigate('/login', {
 							replace: true,
 						})
 					}
@@ -31,7 +40,7 @@ export function AppLayout() {
 		return () => {
 			api.interceptors.response.eject(interceptorId)
 		}
-	}, [navigate])
+	}, [navigate, signed])
 
 	return (
 		<Container>
