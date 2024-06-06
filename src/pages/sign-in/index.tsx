@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
-import { CircleAlert } from 'lucide-react'
+import { CircleAlert, Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +13,14 @@ import { Input } from '@/components/_ui/input'
 import { Label } from '@/components/_ui/label'
 import { Loading } from '@/components/_ui/loading'
 import { useAuth } from '@/contexts/auth'
-import { Container, ErrorMessage, Fieldset, Flex, Form } from './styles'
+import {
+	Container,
+	ErrorMessage,
+	Fieldset,
+	Flex,
+	Form,
+	PasswordContainer,
+} from './styles'
 
 const signInSchema = yup.object().shape({
 	email: yup
@@ -29,6 +36,7 @@ const signInSchema = yup.object().shape({
 type SignInSchema = yup.InferType<typeof signInSchema>
 
 export function SignIn() {
+	const [showPassword, setShowPassword] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
 	const { signIn } = useAuth()
@@ -94,14 +102,21 @@ export function SignIn() {
 
 				<Fieldset>
 					<Label htmlFor="password">Senha</Label>
-					<Input
-						type="password"
-						id="password"
-						placeholder="Sua senha"
-						{...register('password')}
-						size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
-						hasError={!!errors.password}
-					/>
+					<PasswordContainer>
+						<Input
+							type={showPassword ? 'text' : 'password'}
+							id="password"
+							placeholder="Sua senha"
+							{...register('password')}
+							size={{ '@initial': 'sm', '@media (min-width: 768px)': 'md' }}
+							hasError={!!errors.password}
+						/>
+						{showPassword ? (
+							<EyeOff onClick={() => setShowPassword(!showPassword)} />
+						) : (
+							<Eye onClick={() => setShowPassword(!showPassword)} />
+						)}
+					</PasswordContainer>
 					{errors.password && (
 						<ErrorMessage>
 							<CircleAlert />

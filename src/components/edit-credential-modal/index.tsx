@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { CircleAlert, X } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { CircleAlert, Eye, EyeOff, X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as yup from 'yup'
@@ -23,7 +23,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '../_ui/select'
-import { ErrorMessage, Fieldset, Flex, Form, InputsContainer } from './styles'
+import {
+	ErrorMessage,
+	Fieldset,
+	Flex,
+	Form,
+	InputsContainer,
+	PasswordContainer,
+} from './styles'
 
 const editCredentialSchema = yup.object().shape({
 	name: yup.string().required('O campo nome da credencial é obrigatório'),
@@ -46,6 +53,8 @@ export function EditCredentialModal({
 	isOpen,
 	onClose,
 }: EditCredentialModalProps) {
+	const [showPassword, setShowPassword] = useState(false)
+
 	const formRef = useRef(null)
 
 	const queryClient = useQueryClient()
@@ -231,14 +240,34 @@ export function EditCredentialModal({
 												? credentialValue.parameter.title
 												: credentialValue.parameter.description}
 										</Label>
-										<Input
-											type={inputType}
-											step={inputStep}
-											id={credentialValue.uuid}
-											defaultValue={credentialValue.value}
-											name={credentialValue.uuid}
-											required={credentialValue.parameter.required}
-										/>
+										{inputType === 'password' ? (
+											<PasswordContainer>
+												<Input
+													type={showPassword ? 'text' : 'password'}
+													step={inputStep}
+													id={credentialValue.uuid}
+													defaultValue={credentialValue.value}
+													name={credentialValue.uuid}
+													required={credentialValue.parameter.required}
+												/>
+												{showPassword ? (
+													<EyeOff
+														onClick={() => setShowPassword(!showPassword)}
+													/>
+												) : (
+													<Eye onClick={() => setShowPassword(!showPassword)} />
+												)}
+											</PasswordContainer>
+										) : (
+											<Input
+												type={inputType}
+												step={inputStep}
+												id={credentialValue.uuid}
+												defaultValue={credentialValue.value}
+												name={credentialValue.uuid}
+												required={credentialValue.parameter.required}
+											/>
+										)}
 									</Fieldset>
 								)
 							})}
